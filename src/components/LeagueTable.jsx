@@ -5,6 +5,7 @@ import configureStore from '../store/configureStore';
 import LTHeader from './LTHeader.jsx';
 import LTContent from './LTContent.jsx';
 import LTOption from './LTOption.jsx';
+import { getLeagueTableData } from '../action/leagueTableAction';
 
 const store = configureStore();
 console.log(store);
@@ -12,6 +13,9 @@ console.log(store);
 class LeagueTable extends Component {
     constructor() {
         super();
+    }
+    componentWillMount() {
+        store.dispatch(getLeagueTableData());
     }
     render() {
         return (
