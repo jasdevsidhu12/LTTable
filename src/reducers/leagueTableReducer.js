@@ -2,6 +2,7 @@ import { createStore } from 'redux';
 
 const initialState = { isInitialSetup: true };
 
-export function leagueTableReducer(state = initialState, action) {
-    return { ...state };
+export default function leagueTableReducer(state = initialState, action) {
+    console.log('leagueTableReducer');
+    return state;
 }
