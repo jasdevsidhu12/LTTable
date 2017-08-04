@@ -21,10 +21,8 @@ module.exports = {
     stats: 'minimal'
   },
   resolve: {
-    extensions: ['.jsx', '.scss'],
-    alias: {
-      _resources: path.resolve(__dirname, 'resources')
-    }
+    extensions: ['.js','.jsx', '.scss'],
+    modules: ["node_modules"]
   },
   module: {
     rules: [

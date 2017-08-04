@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
  
-class LTHeader extends Component {
+class LTOption extends Component {
     constructor() {
         super();
     }
     render() {
         return (
             <div>
-                Header
+                LTOption
             </div>
         );
     }
 }
-export default LTHeader;
+export default LTOption;
