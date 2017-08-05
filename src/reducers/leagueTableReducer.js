@@ -7,9 +7,9 @@ export default function leagueTableReducer(state = initialState, action) {
     let stateData;
     switch(action.type) {
         case LOADED_INITIAL_CONTENT:
-            console.log('initial content');
+            console.log('reducer initial content');
             console.log(action);
-            stateData = state ;break;
+            stateData = action.payload ;break;
         default: stateData = state;
     }
     return stateData;

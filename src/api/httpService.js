@@ -53,7 +53,7 @@ export function getTableStandings(seasonID = 741) {
             let result = respArray.map((obj) => {
                 return {
                     competition_id: obj.competition_id,
-                    season_id: obj.id,
+                    season_id: obj.season_id,
                     name: obj.name,
                     standings: obj.standings.data
                 }
@@ -74,6 +74,23 @@ export function getTableStandings(seasonID = 741) {
             });
             // console.log(result);
             resolve(result);
+        });
+    });
+}
+
+export function getInitialLeagueTableData() {
+    const result = {};
+    return new Promise((resolve) => {
+        getCompetitions().then((respArray) => {
+            result.competition = respArray;
+            getSeasons().then((respArray) => {
+                result.season = respArray;
+                const seassonID = result.season[0].season_id;
+                getTableStandings(seassonID).then((respArray) => {
+                    result.standings =  respArray;
+                    resolve(result);
+                });
+            });
         });
     });
 }

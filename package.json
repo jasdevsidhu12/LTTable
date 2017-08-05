@@ -4,7 +4,8 @@
   "description": "An interactive league table that shows a sports league table",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "build": "webpack"
   },
   "author": "Jasdev Sidhu",
   "license": "ISC",
