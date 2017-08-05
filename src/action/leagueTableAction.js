@@ -1,16 +1,31 @@
-import { LOADED_INITIAL_CONTENT, UNLOAD_TEAM_MODEL, LOADED_TEAM_MODAL_DATA } from '../api/ltConstant';
-import { getInitialLeagueTableData, getTeamInformation } from '../api/httpService';
+import {
+    LOADED_INITIAL_CONTENT,
+    UNLOAD_TEAM_MODEL,
+    LOADED_TEAM_MODAL_DATA,
+    LOADED_EXIST_TEAM_MODAL_DATA,
+    LOADED_SEASON_STANDINGS_DATA
+} from '../api/ltConstant';
+import { getInitialLeagueTableData, getTeamInformation, getTableStandings } from '../api/httpService';
+import isCurrentTeamExist from '../api/ltUtils';
 
 function loadLeagueTableContent(payload) {
-    console.log('action loadLeagueTableContent ');
-    console.log(payload);
     return { type: LOADED_INITIAL_CONTENT, payload };
 }
 
 function loadTeamModalData(payload) {
-    console.log('action loadTeamModalData');
-    console.log(payload);
     return { type: LOADED_TEAM_MODAL_DATA, payload };
+}
+
+function loadExistTeamModalData() {
+    return { type: LOADED_EXIST_TEAM_MODAL_DATA };
+}
+
+function loadSeasonStandingsData(payload) {
+    return { type: LOADED_SEASON_STANDINGS_DATA, payload }
+}
+
+export function unLoadTeamModelContent() {
+    return { type: UNLOAD_TEAM_MODEL };
 }
 
 export function getLeagueTableData() {
@@ -21,16 +36,24 @@ export function getLeagueTableData() {
     }
 }
 
-export function getTeamModalData(teamID, teamLogo) {
+export function getSeasonStandingData(seasonID) {
     return (dispatch) => {
-        getTeamInformation(teamID).then((responseObject) => {
-            console.log('getTeamModalData');
+        getTableStandings(seasonID).then((responseObject) => {
+            console.log('getSeasonStandingData');
             console.log(responseObject);
-            dispatch(loadTeamModalData(responseObject));
+            dispatch(loadSeasonStandingsData(responseObject));
         });
     }
 }
 
-export function unLoadTeamModelContent() {
-    return { type: UNLOAD_TEAM_MODEL };
+export function getTeamModalData(teamID, teams=[]) {
+    return (dispatch) => {
+        if (isCurrentTeamExist(teamID, teams)) {
+            dispatch(loadExistTeamModalData());
+        } else {
+            getTeamInformation(teamID).then((responseObject) => {
+                dispatch(loadTeamModalData(responseObject));
+            });
+        }
+    }
 }

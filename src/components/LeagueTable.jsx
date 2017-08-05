@@ -9,7 +9,6 @@ import { getLeagueTableData } from '../action/leagueTableAction';
 import '../resources/sass/style.scss';
 
 const store = configureStore();
-console.log(store);
  
 class LeagueTable extends Component {
     constructor() {
@@ -23,8 +22,8 @@ class LeagueTable extends Component {
             <div>
                 <Provider store={ store }>
                     <div>
-                        <LTOption />
                         <LTHeader />
+                        <LTOption />
                         <LTContent />
                     </div>
                 </Provider>

@@ -2,7 +2,9 @@ import { createStore } from 'redux';
 import {
     LOADED_INITIAL_CONTENT,
     LOADED_TEAM_MODAL_DATA,
-    UNLOAD_TEAM_MODEL
+    UNLOAD_TEAM_MODEL,
+    LOADED_EXIST_TEAM_MODAL_DATA,
+    LOADED_SEASON_STANDINGS_DATA
 } from '../api/ltConstant';
 
 const initialState = { isInitialSetup: true, teams: [], isOpenModal: false };
@@ -21,6 +23,12 @@ export default function leagueTableReducer(state = initialState, action) {
             break;
         case UNLOAD_TEAM_MODEL:
             stateData = Object.assign({}, state, { isOpenModal: false });
+            break;
+        case LOADED_EXIST_TEAM_MODAL_DATA:
+            stateData = Object.assign({}, state, { isOpenModal: true });
+            break;
+        case LOADED_SEASON_STANDINGS_DATA:
+            stateData = Object.assign({}, state, { standings: action.payload });
             break;
         default: stateData = state;
     }

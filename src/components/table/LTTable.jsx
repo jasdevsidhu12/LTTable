@@ -10,6 +10,11 @@ class LTTable extends Component {
         this.renderTableBody = this.renderTableBody.bind(this);
         this.displayTeamData = this.displayTeamData.bind(this);
     }
+
+    displayTeamData(teamID, teamLogo) {
+        this.props.getTeamData(teamID, teamLogo);
+    }
+
     renderTableHeader() {
         let headers = [];
         ltColumns.forEach((name, index) => {
@@ -17,15 +22,10 @@ class LTTable extends Component {
         });
         return headers;
     }
-    displayTeamData(teamID, teamLogo) {
-        console.log('displayPlayersData');
-        console.log(teamID + ' '+ teamLogo);
-        this.props.getTeamData(teamID, teamLogo);
-    }
+
     renderTableBody() {
         const table = this.props.standings.table;
         const tableRows = [];
-        console.log(table);
         if (table) {
             table.forEach((obj, key) => {
                 tableRows.push(

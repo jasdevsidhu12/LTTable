@@ -1,37 +1,54 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import { Modal, Grid, Row, Col, Thumbnail } from 'react-bootstrap';
+import { Modal, Media } from 'react-bootstrap';
 
 class LTTeamModal extends Component {
     constructor() {
         super();
         this.closeTeamModal = this.closeTeamModal.bind(this);
         this.renderTeamContent = this.renderTeamContent.bind(this);
+        this.getPlayerNationality = this.getPlayerNationality.bind(this);
+        this.getPlayerDOB = this.getPlayerDOB.bind(this);
     }
 
     closeTeamModal() {
         this.props.closeModalTeamContent();
     }
 
+    getPlayerNationality(nationality) {
+        return (nationality && nationality !== '') ? nationality : 'Not Stated';
+    }
+
+    getPlayerDOB(dob) {
+        return (dob && dob !== '') ? dob : 'Not Stated';
+    }
+
     renderTeamContent() {
         if (this.props.isOpen) {
             let players = this.props.selectedTeam.team[0];
             let displayPlayers = []
-            console.log('&&&&&******** selected team *******&&&');
-            console.log(this.props.selectedTeam);
-            players.forEach((obj) => {
-                console.log(obj);
+            players.forEach((obj, index) => {
                 displayPlayers.push(
-                    <Thumbnail src={obj.img} alt="242x200">
-                        <h3>{ obj.name }</h3>
-                        <p>
-                            <label>Nationality: { obj.nationality }</label>
-                            <label>Date of Birth: { obj.birth_date }</label>
-                        </p>
-                    </Thumbnail>
-                );
+                    <Media key={index}>
+                        <Media.Left>
+                            <img width={64} height={64} src={obj.img} alt="Image"/>
+                        </Media.Left>
+                        <Media.Body>
+                            <Media.Heading>{obj.name}</Media.Heading>
+                            <p>
+                                <label>
+                                    Nationality: { this.getPlayerNationality(obj.nationality) }
+                                </label>
+                                <br />
+                                <label>
+                                    Date of Birth: { this.getPlayerDOB(obj.birth_date) }
+                                </label>
+                            </p>
+                        </Media.Body>
+                    </Media>
+                    );
             });
-            return players;
+            return displayPlayers;
         }
     }
 
@@ -40,7 +57,9 @@ class LTTeamModal extends Component {
             <Modal show={this.props.isOpen}>
                 Yeah !!!!!! Modal
                 <a onClick={() => { this.closeTeamModal()}}> Close </a>
-                { this.renderTeamContent() }
+                <div>
+                    { this.renderTeamContent() }
+                </div>
             </Modal>
         );
     }

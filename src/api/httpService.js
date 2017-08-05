@@ -2,7 +2,6 @@ import axios from 'axios';
 import { tokenAPI } from './ltConstant';
 
 export function sendRequest(apiRequestURL) {
-    console.log('Inside sendRequest Method');
     return new Promise((resolve) => {
         axios.get(apiRequestURL).then(res => {
             resolve(res.data.data);
