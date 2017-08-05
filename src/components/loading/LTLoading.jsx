@@ -9,7 +9,7 @@ class LTLoading extends Component {
     render() {
         return (
             <div>
-                Loading ....
+                <h1>Loading ....</h1>
             </div>
         );
     }

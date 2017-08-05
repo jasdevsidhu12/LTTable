@@ -6,6 +6,7 @@ import LTHeader from './LTHeader.jsx';
 import LTContent from './LTContent.jsx';
 import LTOption from './LTOption.jsx';
 import { getLeagueTableData } from '../action/leagueTableAction';
+import '../resources/sass/style.scss';
 
 const store = configureStore();
 console.log(store);
