@@ -16,11 +16,13 @@ class LTContent extends Component {
         this.closeModalTeamContent = this.closeModalTeamContent.bind(this);
         this.selectedTeamID = '';
         this.selectedTeamLogo = '';
+        this.selectedTeamName ='';
     }
 
-    getTeamData(teamID, teamLogo) {
+    getTeamData(teamID, teamLogo, teamName) {
         this.selectedTeamID = teamID;
         this.selectedTeamLogo = teamLogo;
+        this.selectedTeamName = teamName;
         this.props.getTeamModalData(teamID, this.props.teams);
     }
 
@@ -46,8 +48,11 @@ class LTContent extends Component {
             });
         }
         return (
-            <LTTeamModal selectedTeam = { selectedTeam }
+            <LTTeamModal
+            selectedTeam = { selectedTeam }
             isOpen={this.props.isTeamModelOpen}
+            teamLogo={this.selectedTeamLogo}
+            teamName={this.selectedTeamName}
             closeModalTeamContent={this.closeModalTeamContent} />
         );
     }
@@ -55,7 +60,7 @@ class LTContent extends Component {
     render() {
         return (
             <div>
-                <div className="table-size">
+                <div>
                     { this.renderLeagueTableContent() }
                 </div>
                 { this.renderModalTeamContent() }

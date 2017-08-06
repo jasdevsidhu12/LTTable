@@ -1,10 +1,86 @@
-div {
-    h1 {
-        color: blue;
+$standardColor: #005e48;
+@mixin fontWeight {
+    font-weight: bold;
+}
+body {
+    color: $standardColor;
+    a {
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    .league-table-header {
+        background-color: $standardColor;
+        width: 100%;
+        height: 50px;
+        color: whitesmoke;
+        font-size: 36px;
+        padding-left: 10px;
+    }
+    .league-table-canvas {
+        padding: 30px;
+    }
+    .league-table-option-headings {
+        color: $standardColor;
+        font-size: 24px;
+        margin-bottom: 20px;
+        @include fontWeight;
+    }
+    .league-table-dropdown-panel {
+        font-size: 16px;
+        color: $standardColor;
+        padding-top: 20px;
+        display: table-row;
+        @include fontWeight;
+        .league-table-float-left {
+            display: table-cell;
+            padding-right: 10px;
+            // border: solid black 1px;
+        }
+    }
+
+    // --- BootStrap CSS Adjustment --
+    .dropdown-menu {
+        li {
+            a {
+                color: $standardColor;
+                font-size: 16px;
+                &:hover {
+                    color: darkgreen;
+                    @include fontWeight;
+                }
+            }
+        }
+    }
+    .table {
+        margin-top: 20px;
+        width: 700px;
+        height: 300px;
+        .league-table-tb-green-row {
+            background-color: $standardColor;
+            color: white;
+            box-shadow: 10px 10px 5px #888888;
+            @include fontWeight;
+            td {
+                a {
+                    color: white;
+                    @include fontWeight;
+                }
+            }
+        }
+        .league-table-tb-header {
+            background-color: #012b23;
+        }
+        .league-table-tb-green-font-row {
+            color: $standardColor;
+            @include fontWeight;
+            td {
+                a {
+                    color: $standardColor;
+                    @include fontWeight;
+                }
+            }
+        }
     }
 }
 
-.table-size {
-    width: 600px;
-    height: 300px;
-}

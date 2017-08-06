@@ -15,10 +15,10 @@ class LTOption extends Component {
         this.seasonID = '';
     }
 
-    getSeasonData(seasonID) {
+    getSeasonData(seasonID, seasonName) {
         console.log('season id : ' + seasonID);
         this.seasonID = seasonID;
-        this.props.getSeasonStandingData(seasonID);
+        this.props.getSeasonStandingData(seasonID, seasonName);
     }
 
     getAllSeasons(competitionID) {
@@ -28,17 +28,25 @@ class LTOption extends Component {
     }
     renderOptionContent() {
         if (!this.props.isInitialSetup) {
-            const competitionName = this.props.standings.name;
-            const groupName = 'Group: ' + this.props.standings.standings[0].group_name;
-            console.log('Group Name ');
-            console.log(this.props.standings.standings[0].group_name);
+            const competitionName = this.props.competitionName;
+            const seasonName = this.props.seasonName;
             let allSeasons = [];
             allSeasons = this.getAllSeasons(this.props.standings.competition_id);
             return (
                 <div>
-                    <h1> { competitionName } </h1>
-                    <h1> { groupName } </h1>
-                    <LTDropDown setSeasonID={this.getSeasonData} content={allSeasons} type={'seasons'}/>
+                    <div className="league-table-option-headings">
+                        <span>
+                            { competitionName + ' ' + seasonName }
+                        </span>
+                    </div>
+                    <div className="league-table-dropdown-panel">
+                        <div className="league-table-float-left">
+                            Change Season
+                        </div>
+                        <div className="league-table-float-left">
+                            <LTDropDown setSeasonID={this.getSeasonData} content={allSeasons} />
+                        </div>
+                    </div>
                 </div>
             );
         }
@@ -66,7 +74,8 @@ function mapStatetoProps(state) {
     console.log(state);
     return {
         isInitialSetup: state.leagueTableReducer.isInitialSetup,
-        competitions: state.leagueTableReducer.competition,
+        competitionName: state.leagueTableReducer.competitionName,
+        seasonName: state.leagueTableReducer.seasonName,
         seasons: state.leagueTableReducer.season,
         standings: state.leagueTableReducer.standings
     }

@@ -7,6 +7,7 @@ class LTTeamModal extends Component {
         super();
         this.closeTeamModal = this.closeTeamModal.bind(this);
         this.renderTeamContent = this.renderTeamContent.bind(this);
+        this.renderTeamHeader = this.renderTeamHeader.bind(this);
         this.getPlayerNationality = this.getPlayerNationality.bind(this);
         this.getPlayerDOB = this.getPlayerDOB.bind(this);
     }
@@ -52,11 +53,16 @@ class LTTeamModal extends Component {
         }
     }
 
+    renderTeamHeader() {
+        return (<div>{this.props.teamName} <img src={this.props.teamLogo} /></div>);
+    }
     render() {
         return (
             <Modal show={this.props.isOpen}>
-                Yeah !!!!!! Modal
                 <a onClick={() => { this.closeTeamModal()}}> Close </a>
+                <div>
+                    { this.renderTeamHeader() }
+                </div>
                 <div>
                     { this.renderTeamContent() }
                 </div>
@@ -67,6 +73,8 @@ class LTTeamModal extends Component {
 LTTeamModal.propTypes = {
     closeModalTeamContent: PropTypes.func,
     isOpen: PropTypes.bool,
-    selectedTeam: PropTypes.object
+    selectedTeam: PropTypes.object,
+    teamName: PropTypes.string,
+    teamLogo: PropTypes.string
 }
 export default LTTeamModal;

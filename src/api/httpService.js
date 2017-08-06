@@ -67,12 +67,6 @@ export function getTableStandings(seasonID = 741) {
                     points: obj.points
                 };
             });
-            // result.groups = result.groups.filter((obj) => {
-            //     console.log(obj);
-            //     obj.teams.data && obj.teams.data.length > 1
-            // });
-            // console.log('*****result*******');
-            // console.log(result);
             resolve(result);
         });
     });
@@ -85,7 +79,9 @@ export function getInitialLeagueTableData() {
             result.competition = respArray;
             getSeasons().then((respArray) => {
                 result.season = respArray;
+                result.seasonName = result.season[0].name;
                 const seassonID = result.season[0].season_id;
+                result.competitionName = getComptitionName(result.season[0].competition_id, result.competition);
                 getTableStandings(seassonID).then((respArray) => {
                     result.standings =  respArray;
                     resolve(result);
@@ -95,6 +91,14 @@ export function getInitialLeagueTableData() {
     });
 }
 
+function getComptitionName(competitionID, competitions) {
+    const competition = competitions.find((obj) => {
+        if (obj.competition_id === competitionID) {
+            return obj.name;
+        }
+    });
+    return competition.name;
+}
 export function getTeamInformation(teamID) {
     const apiRequestURL = `https://api.soccerama.pro/v1.2/players/team/${teamID}?api_token=${tokenAPI}`;
      return new Promise((resolve) => {

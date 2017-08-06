@@ -21,10 +21,14 @@ class LeagueTable extends Component {
         return (
             <div>
                 <Provider store={ store }>
-                    <div>
-                        <LTHeader />
-                        <LTOption />
-                        <LTContent />
+                    <div className="league-table-header">
+                        <div>
+                            <LTHeader />
+                        </div>
+                        <div className="league-table-canvas">
+                            <LTOption />
+                            <LTContent />
+                        </div>
                     </div>
                 </Provider>
             </div>

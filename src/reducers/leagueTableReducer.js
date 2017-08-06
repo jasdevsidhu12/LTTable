@@ -28,7 +28,9 @@ export default function leagueTableReducer(state = initialState, action) {
             stateData = Object.assign({}, state, { isOpenModal: true });
             break;
         case LOADED_SEASON_STANDINGS_DATA:
-            stateData = Object.assign({}, state, { standings: action.payload });
+            stateData =
+            Object.assign({}, state, { standings: action.payload.standings },
+            { seasonName: action.payload.seasonName});
             break;
         default: stateData = state;
     }

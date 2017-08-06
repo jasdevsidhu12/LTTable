@@ -36,12 +36,11 @@ export function getLeagueTableData() {
     }
 }
 
-export function getSeasonStandingData(seasonID) {
+export function getSeasonStandingData(seasonID, seasonName) {
     return (dispatch) => {
         getTableStandings(seasonID).then((responseObject) => {
-            console.log('getSeasonStandingData');
-            console.log(responseObject);
-            dispatch(loadSeasonStandingsData(responseObject));
+            const newRespObj = Object.assign({}, { standings: responseObject }, { seasonName });
+            dispatch(loadSeasonStandingsData(newRespObj));
         });
     }
 }

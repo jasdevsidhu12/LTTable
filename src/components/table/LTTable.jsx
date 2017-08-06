@@ -9,12 +9,16 @@ class LTTable extends Component {
         this.renderTableHeader = this.renderTableHeader.bind(this);
         this.renderTableBody = this.renderTableBody.bind(this);
         this.displayTeamData = this.displayTeamData.bind(this);
+        this.getRowClassName = this.getRowClassName.bind(this);
     }
 
-    displayTeamData(teamID, teamLogo) {
-        this.props.getTeamData(teamID, teamLogo);
+    displayTeamData(teamID, teamLogo, teamName) {
+        this.props.getTeamData(teamID, teamLogo, teamName);
     }
 
+    getRowClassName(isGreenRow) {
+        return isGreenRow? 'league-table-tb-green-row' : 'league-table-tb-green-font-row';
+    }
     renderTableHeader() {
         let headers = [];
         ltColumns.forEach((name, index) => {
@@ -26,13 +30,18 @@ class LTTable extends Component {
     renderTableBody() {
         const table = this.props.standings.table;
         const tableRows = [];
+        let isGreenRow = false;
+        let rowClassName = this.getRowClassName(isGreenRow);
         if (table) {
             table.forEach((obj, key) => {
+                rowClassName = this.getRowClassName(isGreenRow);
                 tableRows.push(
-                    <tr key={key}>
+                    <tr key={key} className={ rowClassName }>
                         <td>{ obj.position }</td>
                         <td>
-                            <a onClick={ () => { this.displayTeamData(obj.team_id, obj.team_logo) } }>
+                            <a onClick={ () => {
+                                this.displayTeamData(obj.team_id, obj.team_logo, obj.team_name)
+                            } }>
                                 { obj.team_name }
                             </a>
                         </td>
@@ -44,6 +53,7 @@ class LTTable extends Component {
                         <td>{ obj.points }</td>
                     </tr>
                 );
+                isGreenRow = !isGreenRow;
             });
         }
         return tableRows;
@@ -52,7 +62,7 @@ class LTTable extends Component {
         return (
             <Table>
                 <thead>
-                    <tr>
+                    <tr className="league-table-tb-green-row league-table-tb-header">
                         { this.renderTableHeader() }
                     </tr>
                 </thead>

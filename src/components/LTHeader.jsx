@@ -8,7 +8,7 @@ class LTHeader extends Component {
     render() {
         return (
             <div>
-                Header
+                League Table
             </div>
         );
     }

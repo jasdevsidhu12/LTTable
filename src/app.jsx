@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import LeagueTable from './components/LeagueTable.jsx';
+import LeagueTableCanvas from './components/LeagueTableCanvas.jsx';
 
 class App extends Component {
   render() {
     return (
       <div>
-        <LeagueTable />
+        <LeagueTableCanvas />
       </div>
       );
   }
