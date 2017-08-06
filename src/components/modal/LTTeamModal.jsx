@@ -54,16 +54,21 @@ class LTTeamModal extends Component {
     }
 
     renderTeamHeader() {
-        return (<div>{this.props.teamName} <img src={this.props.teamLogo} /></div>);
+        return (
+            <Modal.Header closeButton>
+                <div>
+                    <img src={this.props.teamLogo} /> {this.props.teamName + ' F.C Players'}
+                </div>
+            </Modal.Header>
+        );
     }
     render() {
         return (
-            <Modal show={this.props.isOpen}>
-                <a onClick={() => { this.closeTeamModal()}}> Close </a>
-                <div>
+            <Modal show={this.props.isOpen} onHide={() => { this.closeTeamModal()}}>
+                <div className="modal-dialog-header">
                     { this.renderTeamHeader() }
                 </div>
-                <div>
+                <div className="modal-dialog-content">
                     { this.renderTeamContent() }
                 </div>
             </Modal>

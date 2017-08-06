@@ -1,0 +1,65 @@
+  // --- BootStrap CSS Adjustment --
+.dropdown-menu {
+    li {
+        a {
+            color: $standardColor;
+            font-size: 16px;
+            &:hover {
+                color: darkgreen;
+                @include fontWeight;
+            }
+        }
+    }
+}
+.modal-content {
+    padding: 10px;
+    background-color: whitesmoke;
+    .modal-dialog-header {
+        @include fontWeight;
+        text-align: center;
+        color: black;
+        margin-bottom: 35px;
+        img {
+            height: 50px;
+            width: 50px;
+        }
+    }
+    .modal-dialog-content {
+        color: black;
+    }
+}
+.table {
+    margin-top: 20px;
+    width: 700px;
+    height: 300px;
+    tr {
+        td {
+            text-align: center;
+        }
+    }
+    .league-table-tb-green-row {
+        background-color: $standardColor;
+        color: white;
+        box-shadow: 10px 10px 5px #888888;
+        @include fontWeight;
+        td {
+            a {
+                color: white;
+                @include fontWeight;
+            }
+        }
+    }
+    .league-table-tb-header {
+        background-color: #012b23;
+    }
+    .league-table-tb-green-font-row {
+        color: $standardColor;
+        @include fontWeight;
+        td {
+            a {
+                color: $standardColor;
+                @include fontWeight;
+            }
+        }
+    }
+}

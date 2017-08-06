@@ -38,49 +38,5 @@ body {
             // border: solid black 1px;
         }
     }
-
-    // --- BootStrap CSS Adjustment --
-    .dropdown-menu {
-        li {
-            a {
-                color: $standardColor;
-                font-size: 16px;
-                &:hover {
-                    color: darkgreen;
-                    @include fontWeight;
-                }
-            }
-        }
-    }
-    .table {
-        margin-top: 20px;
-        width: 700px;
-        height: 300px;
-        .league-table-tb-green-row {
-            background-color: $standardColor;
-            color: white;
-            box-shadow: 10px 10px 5px #888888;
-            @include fontWeight;
-            td {
-                a {
-                    color: white;
-                    @include fontWeight;
-                }
-            }
-        }
-        .league-table-tb-header {
-            background-color: #012b23;
-        }
-        .league-table-tb-green-font-row {
-            color: $standardColor;
-            @include fontWeight;
-            td {
-                a {
-                    color: $standardColor;
-                    @include fontWeight;
-                }
-            }
-        }
-    }
 }
 
