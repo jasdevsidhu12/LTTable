@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { tokenAPI } from './ltConstant';
-
+import img from '../resources/img/playerIcon.png';
 export function sendRequest(apiRequestURL) {
     return new Promise((resolve) => {
         axios.get(apiRequestURL).then(res => {
@@ -112,7 +112,8 @@ export function getTeamInformation(teamID) {
                     height: obj.height,
                     weight: obj.weight,
                     shirt_number: obj.shirt_number,
-                    img: obj.photo
+                    img:
+                    (obj.photo && obj.photo !== '') ? obj.photo : img
                 }
             });
             const newResult = Object.assign({}, { team: [result] }, { team_id: teamID });

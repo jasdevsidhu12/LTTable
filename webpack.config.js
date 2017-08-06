@@ -35,7 +35,7 @@ module.exports = {
                 presets: ['es2015', 'react']
             }
         }
-      },
+      }, 
       {
         test: /\.scss$/,
         exclude: /node_modules/,
@@ -46,6 +46,18 @@ module.exports = {
           }, {
             loader: "sass-loader"
         }]
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192
+            }
+          }
+        ]
       }
     ]
   }
