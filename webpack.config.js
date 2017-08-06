@@ -52,10 +52,7 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'url-loader',
-            options: {
-              limit: 10000
-            }
+            loader: 'url-loader'
           }
         ]
       }
