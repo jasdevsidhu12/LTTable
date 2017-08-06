@@ -45,16 +45,20 @@ export function getTableStandings(seasonID = 741) {
                     competition_id: obj.competition_id,
                     season_id: obj.season_id,
                     name: obj.name,
-                    standings: obj.standings.data
+                    standings: obj.standings.data,
+                    groups: obj.groups.data
                 }
             });
             result = Object.assign({}, result[0]);
+            console.log('----------result----------');
+            console.log(result);
             result.standings = result.standings.map((obj) => {
                 return {
                     position: obj.position,
                     team_name: obj.team.name,
                     team_logo: obj.team.logo,
                     team_id: obj.team.id,
+                    group_name: obj.group,
                     played: (obj.home_played + obj.away_played),
                     won: (obj.home_win + obj.away_win),
                     draw: (obj.home_draw + obj.away_draw),
@@ -63,6 +67,12 @@ export function getTableStandings(seasonID = 741) {
                     points: obj.points
                 };
             });
+            // result.groups = result.groups.filter((obj) => {
+            //     console.log(obj);
+            //     obj.teams.data && obj.teams.data.length > 1
+            // });
+            // console.log('*****result*******');
+            // console.log(result);
             resolve(result);
         });
     });

@@ -11,11 +11,11 @@ class LTOption extends Component {
         super();
         this.renderOptionContent = this.renderOptionContent.bind(this);
         this.getAllSeasons = this.getAllSeasons.bind(this);
-        this.setSeasonID = this.setSeasonID.bind(this);
+        this.getSeasonData = this.getSeasonData.bind(this);
         this.seasonID = '';
     }
 
-    setSeasonID(seasonID) {
+    getSeasonData(seasonID) {
         console.log('season id : ' + seasonID);
         this.seasonID = seasonID;
         this.props.getSeasonStandingData(seasonID);
@@ -29,18 +29,18 @@ class LTOption extends Component {
     renderOptionContent() {
         if (!this.props.isInitialSetup) {
             const competitionName = this.props.standings.name;
+            const groupName = 'Group: ' + this.props.standings.standings[0].group_name;
+            console.log('Group Name ');
+            console.log(this.props.standings.standings[0].group_name);
             let allSeasons = [];
             allSeasons = this.getAllSeasons(this.props.standings.competition_id);
-            console.log('all seasons');
-            console.log(allSeasons);
             return (
                 <div>
                     <h1> { competitionName } </h1>
-                    <LTDropDown setSeasonID={this.setSeasonID} content={allSeasons} type={'seasons'}/>
-                    <button>Get Season Team Standings</button>
+                    <h1> { groupName } </h1>
+                    <LTDropDown setSeasonID={this.getSeasonData} content={allSeasons} type={'seasons'}/>
                 </div>
             );
-            
         }
         return (<LTLoading />);
     }
