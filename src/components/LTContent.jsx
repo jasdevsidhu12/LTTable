@@ -46,15 +46,15 @@ class LTContent extends Component {
             selectedTeam = this.props.teams.find((obj) => {
                 return obj.team_id === this.selectedTeamID;
             });
+             return (
+                <LTTeamModal
+                selectedTeam = { selectedTeam }
+                isOpen={this.props.isTeamModelOpen}
+                teamLogo={this.selectedTeamLogo}
+                teamName={this.selectedTeamName}
+                closeModalTeamContent={this.closeModalTeamContent} />
+            );
         }
-        return (
-            <LTTeamModal
-            selectedTeam = { selectedTeam }
-            isOpen={this.props.isTeamModelOpen}
-            teamLogo={this.selectedTeamLogo}
-            teamName={this.selectedTeamName}
-            closeModalTeamContent={this.closeModalTeamContent} />
-        );
     }
 
     render() {

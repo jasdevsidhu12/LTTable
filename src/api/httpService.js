@@ -1,12 +1,22 @@
 import axios from 'axios';
 import { tokenAPI } from './ltConstant';
 import img from '../resources/img/playerIcon.png';
+
 export function sendRequest(apiRequestURL) {
     return new Promise((resolve) => {
         axios.get(apiRequestURL).then(res => {
             resolve(res.data.data);
       });
     });
+}
+
+function getComptitionName(competitionID, competitions) {
+    const competition = competitions.find((obj) => {
+        if (obj.competition_id === competitionID) {
+            return obj.name;
+        }
+    });
+    return competition.name;
 }
 
 export function getCompetitions() {
@@ -91,14 +101,6 @@ export function getInitialLeagueTableData() {
     });
 }
 
-function getComptitionName(competitionID, competitions) {
-    const competition = competitions.find((obj) => {
-        if (obj.competition_id === competitionID) {
-            return obj.name;
-        }
-    });
-    return competition.name;
-}
 export function getTeamInformation(teamID) {
     const apiRequestURL = `https://api.soccerama.pro/v1.2/players/team/${teamID}?api_token=${tokenAPI}`;
      return new Promise((resolve) => {

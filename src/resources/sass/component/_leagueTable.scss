@@ -26,6 +26,14 @@ body {
         margin-bottom: 20px;
         @include fontWeight;
     }
+    .league-table-loading-comp {
+        color: $standardColor;
+        font-size: 16px;
+        img {
+            height: 50px;
+            width: 50px;
+        }
+    }
     .league-table-dropdown-panel {
         font-size: 16px;
         color: $standardColor;

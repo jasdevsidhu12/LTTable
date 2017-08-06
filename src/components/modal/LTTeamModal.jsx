@@ -8,20 +8,15 @@ class LTTeamModal extends Component {
         this.closeTeamModal = this.closeTeamModal.bind(this);
         this.renderTeamContent = this.renderTeamContent.bind(this);
         this.renderTeamHeader = this.renderTeamHeader.bind(this);
-        this.getPlayerNationality = this.getPlayerNationality.bind(this);
-        this.getPlayerDOB = this.getPlayerDOB.bind(this);
+        this.getPlayerDefaultValue = this.getPlayerDefaultValue.bind(this);
     }
 
     closeTeamModal() {
         this.props.closeModalTeamContent();
     }
 
-    getPlayerNationality(nationality) {
-        return (nationality && nationality !== '') ? nationality : 'Not Stated';
-    }
-
-    getPlayerDOB(dob) {
-        return (dob && dob !== '') ? dob : 'Not Stated';
+    getPlayerDefaultValue(value) {
+        return (value && value !== '') ? value : 'Not Stated';
     }
 
     renderTeamContent() {
@@ -32,17 +27,21 @@ class LTTeamModal extends Component {
                 displayPlayers.push(
                     <Media key={index}>
                         <Media.Left>
-                            <img width={64} height={64} src={obj.img} alt="Image"/>
+                            <img src={obj.img} alt="Image"/>
                         </Media.Left>
                         <Media.Body>
                             <Media.Heading>{obj.name}</Media.Heading>
                             <p>
                                 <label>
-                                    Nationality: { this.getPlayerNationality(obj.nationality) }
+                                    Nationality: { this.getPlayerDefaultValue(obj.nationality) }
                                 </label>
                                 <br />
                                 <label>
-                                    Date of Birth: { this.getPlayerDOB(obj.birth_date) }
+                                    Date of Birth: { this.getPlayerDefaultValue(obj.birth_date) }
+                                </label>
+                                <br />
+                                <label>
+                                    Shirt Number: { this.getPlayerDefaultValue(obj.shirt_number)}
                                 </label>
                             </p>
                         </Media.Body>

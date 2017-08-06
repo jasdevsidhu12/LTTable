@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
- 
+import img from '../../resources/img/loading.gif';
+
 class LTLoading extends Component {
     constructor() {
         super();
@@ -8,8 +9,10 @@ class LTLoading extends Component {
     }
     render() {
         return (
-            <div>
-                <h1>Loading ....</h1>
+            <div className="league-table-loading-comp">
+                <span>
+                    <img src={img} /> Loading ....
+                </span>
             </div>
         );
     }
