@@ -8,27 +8,26 @@ class LTDropDown extends Component {
         this.renderMenuItem = this.renderMenuItem.bind(this);
         this.setSeasonsID = this.setSeasonsID.bind(this);
         this.getSeasonName = this.getSeasonName.bind(this);
+        this.dropDownButton = '';
     }
 
     setSeasonsID(seasonID, seasonName) {
         this.props.setSeasonID(seasonID, seasonName);
-        console.log('--seasson--');
-        console.log(seasonName);
-        this.dropDownButton.innerText = this.getSeasonName(seasonName);
+        if (this.dropDownButton && this.dropDownButton.innerText) {
+            this.dropDownButton.innerText = this.getSeasonName(seasonName);
+        }
     }
 
     getSeasonName(seasonName) {
         return " " + seasonName + " ";
     }
     renderMenuItem() {
-        console.log('renderMenuItem');
-        console.log(this.props.content);
         const menuItems = [];
         this.props.content.map((obj, key) => {
             menuItems.push(
                 <MenuItem key={key} eventKey={key.toString()}
                 onClick={() => this.setSeasonsID(obj.season_id, obj.name)} >
-                    {obj.name}
+                    <span>{obj.name}</span>
                 </MenuItem>
             );
         });

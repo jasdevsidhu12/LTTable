@@ -60,8 +60,6 @@ export function getTableStandings(seasonID = 741) {
                 }
             });
             result = Object.assign({}, result[0]);
-            console.log('----------result----------');
-            console.log(result);
             result.standings = result.standings.map((obj) => {
                 return {
                     position: obj.position,

@@ -16,7 +16,6 @@ class LTOption extends Component {
     }
 
     getSeasonData(seasonID, seasonName) {
-        console.log('season id : ' + seasonID);
         this.seasonID = seasonID;
         this.props.getSeasonStandingData(seasonID, seasonName);
     }
@@ -70,8 +69,6 @@ LTOption.propTypes = {
 
 
 function mapStatetoProps(state) {
-    console.log('mapStatetoProps LTOption');
-    console.log(state);
     return {
         isInitialSetup: state.leagueTableReducer.isInitialSetup,
         competitionName: state.leagueTableReducer.competitionName,
