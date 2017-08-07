@@ -4,7 +4,8 @@ module.exports = function(config) {
     const _config = {
         basePath: '',
         frameworks: ['jasmine'],
-        files: ['node_modules/babel-polyfill/dist/polyfill.js', 'test/unit/**/*.js'],
+        files: ['node_modules/babel-polyfill/dist/polyfill.js',
+        { pattern: 'test/unit/**/*.js', watched: true }],
         preprocessors: {
             'src/components/LeagueTableCanvas.jsx': ['webpack', 'sourcemap'],
             'test/unit/**/*.js': ['webpack', 'sourcemap']
@@ -15,7 +16,8 @@ module.exports = function(config) {
                 alias: {
                     _components: path.resolve(__dirname, 'src/components'),
                     _action: path.resolve(__dirname, 'src/action'),
-                    _api: path.resolve(__dirname, 'src/api')
+                    _api: path.resolve(__dirname, 'src/api'),
+                    _reducers: path.resolve(__dirname, 'src/reducers')
                 }
             },
             plugins: [
@@ -69,10 +71,16 @@ module.exports = function(config) {
                 ]
             }
         },
+        webpackMiddleware: {
+            stats: 'error-only'
+        },
+        webpackServer: {
+            noInfo: true
+        },
         browsers: ['Chrome'],
         port: 9876,
         colors: true,
-        autoWatch: false,
+        autoWatch: true,
         singleRun: true
     };
     config.set(_config);
