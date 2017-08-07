@@ -13,7 +13,9 @@ module.exports = function(config) {
             resolve: {
                 extensions: ['.js','.jsx', '.scss'],
                 alias: {
-                    _components: path.resolve(__dirname, 'src/components')
+                    _components: path.resolve(__dirname, 'src/components'),
+                    _action: path.resolve(__dirname, 'src/action'),
+                    _api: path.resolve(__dirname, 'src/api')
                 }
             },
             plugins: [

@@ -8,7 +8,7 @@ import {
 import { getInitialLeagueTableData, getTeamInformation, getTableStandings } from '../api/httpService';
 import isCurrentTeamExist from '../api/ltUtils';
 
-function loadLeagueTableContent(payload) {
+export function loadLeagueTableContent(payload) {
     return { type: LOADED_INITIAL_CONTENT, payload };
 }
 
