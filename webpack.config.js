@@ -21,8 +21,7 @@ module.exports = {
     stats: 'minimal'
   },
   resolve: {
-    extensions: ['.js','.jsx', '.scss'],
-    modules: ["node_modules"]
+    extensions: ['.js','.jsx', '.scss']
   },
   module: {
     rules: [

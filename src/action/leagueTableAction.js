@@ -5,10 +5,10 @@ import {
     LOADED_EXIST_TEAM_MODAL_DATA,
     LOADED_SEASON_STANDINGS_DATA
 } from '../api/ltConstant';
-import { getInitialLeagueTableData, getTeamInformation, getTableStandings } from '../api/httpService';
+import { getInitialLeagueTableData, getTeamInformation, getTableStandings } from '../api/ltAPIService';
 import isCurrentTeamExist from '../api/ltUtils';
 
-function loadLeagueTableContent(payload) {
+export function loadLeagueTableContent(payload) {
     return { type: LOADED_INITIAL_CONTENT, payload };
 }
 

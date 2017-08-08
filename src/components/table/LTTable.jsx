@@ -8,12 +8,7 @@ class LTTable extends Component {
         super();
         this.renderTableHeader = this.renderTableHeader.bind(this);
         this.renderTableBody = this.renderTableBody.bind(this);
-        this.displayTeamData = this.displayTeamData.bind(this);
         this.getRowClassName = this.getRowClassName.bind(this);
-    }
-
-    displayTeamData(teamID, teamLogo, teamName) {
-        this.props.getTeamData(teamID, teamLogo, teamName);
     }
 
     getRowClassName(isGreenRow) {
@@ -40,7 +35,7 @@ class LTTable extends Component {
                         <td>{ obj.position }</td>
                         <td>
                             <a onClick={ () => {
-                                this.displayTeamData(obj.team_id, obj.team_logo, obj.team_name)
+                                this.props.getTeamData(obj.team_id, obj.team_logo, obj.team_name)
                             } }>
                                 { obj.team_name }
                             </a>

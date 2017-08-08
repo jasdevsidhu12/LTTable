@@ -9,7 +9,7 @@ import {
 
 const initialState = { isInitialSetup: true, teams: [], isOpenModal: false };
 
-export default function leagueTableReducer(state = initialState, action) {
+export default function leagueTableReducer(state = initialState, action={}) {
     let stateData;
     switch(action.type) {
         case LOADED_INITIAL_CONTENT:
