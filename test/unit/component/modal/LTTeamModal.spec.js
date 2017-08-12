@@ -20,6 +20,7 @@ describe('<LTTeamModal />', () => {
         expect(shWrapper.find('.modal-dialog-header').length).toEqual(1);
     });
     it('should call the props function "closeTeamModal" when Modal "onHide" function is triggered', ()=>{
+        console.log(shWrapperInst.props);
         spyOn(shWrapperInst, 'closeTeamModal').and.callThrough();
         shWrapper.props().onHide();
         expect(shWrapperInst.closeTeamModal).toHaveBeenCalled();

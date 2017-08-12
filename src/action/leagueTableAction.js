@@ -6,7 +6,7 @@ import {
     LOADED_SEASON_STANDINGS_DATA
 } from '../api/ltConstant';
 import { getInitialLeagueTableData, getTeamInformation, getTableStandings } from '../api/ltAPIService';
-import isCurrentTeamExist from '../api/ltUtils';
+import { isCurrentTeamExist } from '../api/ltUtils';
 
 export function loadLeagueTableContent(payload) {
     return { type: LOADED_INITIAL_CONTENT, payload };

@@ -1,3 +1,5 @@
+import { getDefaultHostname } from './ltUtils';
+
 export const ltColumns = ['Position', 'Team Name', 'Played', 'Won',
 'Drawn', 'Lost', 'Goal Different', 'Points'];
 
@@ -8,3 +10,4 @@ export const LOADED_TEAM_MODAL_DATA = 'LOADED_TEAM_MODAL_DATA';
 export const LOADED_EXIST_TEAM_MODAL_DATA = 'LOADED_EXIST_TEAM_MODAL_DATA';
 export const LOADED_SEASON_STANDINGS_DATA = 'LOADED_SEASON_STANDINGS_DATA';
 export const UNLOAD_TEAM_MODEL = 'UNLOAD_TEAM_MODEL';
+export const hostname = getDefaultHostname();

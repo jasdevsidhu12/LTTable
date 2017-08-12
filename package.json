@@ -4,8 +4,8 @@
   "description": "An interactive league table that shows a sports league table",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server",
-    "build": "webpack",
+    "start": "cross-env NODE_ENV=production webpack-dev-server",
+    "build": "cross-env NODE_ENV=development webpack",
     "server": "node server.js",
     "test": "karma start karma.conf.js"
   },
@@ -25,6 +25,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
     "babel-register": "^6.24.1",
+    "cross-env": "^5.0.5",
     "css-loader": "^0.28.4",
     "enzyme": "^2.9.1",
     "file-loader": "^0.11.2",

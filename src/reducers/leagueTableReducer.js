@@ -16,10 +16,11 @@ export default function leagueTableReducer(state = initialState, action={}) {
             stateData = Object.assign({}, state, { isInitialSetup: false }, action.payload);
             break;
         case LOADED_TEAM_MODAL_DATA:
-            state.teams.push(action.payload)
-            stateData =
-            Object.assign({}, state, {  teams: [...state.teams] },
-            { isOpenModal: true });
+            //  state.teams.push(action.payload)
+            // stateData =
+            // Object.assign({}, state, {  teams: [...state.teams, action.payload] },
+            // { isOpenModal: true });
+            stateData = { ...state, teams: [...state.teams, action.payload],  isOpenModal: true };
             break;
         case UNLOAD_TEAM_MODEL:
             stateData = Object.assign({}, state, { isOpenModal: false });

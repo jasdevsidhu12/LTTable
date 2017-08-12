@@ -11,6 +11,11 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+      }
+    })
   ],
   devtool: 'source-map',
   devServer: {
@@ -26,12 +31,12 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx$/,
+        test: /\.(jsx|js)$/,
         exclude: /node_modules/,
         use: {
             loader: 'babel-loader',
             options: {
-                presets: ['es2015', 'react']
+                presets: ['es2015', 'react', 'stage-1']
             }
         }
       }, 

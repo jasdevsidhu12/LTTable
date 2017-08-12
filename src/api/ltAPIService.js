@@ -1,4 +1,4 @@
-import { tokenAPI } from './ltConstant';
+import { tokenAPI, hostname } from './ltConstant';
 import img from '../resources/img/playerIcon.png';
 import sendRequest from './httpService';
 
@@ -12,8 +12,7 @@ function getComptitionName(competitionID, competitions) {
 }
 
 export function getCompetitions() {
-    const apiRequestURL =
-    `https://api.soccerama.pro/v1.2/competitions?api_token=${tokenAPI}`;
+    const apiRequestURL = `${hostname}/competitions?api_token=${tokenAPI}`;
     return new Promise((resolve) => {
         sendRequest(apiRequestURL).then((respArray) => { 
             const result = respArray.map((obj) => {
@@ -25,8 +24,7 @@ export function getCompetitions() {
 }
 
 export function getSeasons() {
-    const apiRequestURL =
-    `https://api.soccerama.pro/v1.2/seasons?api_token=${tokenAPI}`;
+    const apiRequestURL = `${hostname}/seasons?api_token=${tokenAPI}`;
     return new Promise((resolve) => {
         sendRequest(apiRequestURL).then((respArray) => {
             const result = respArray.map((obj) => {
@@ -38,8 +36,7 @@ export function getSeasons() {
 }
 
 export function getTableStandings(seasonID = 741) {
-    const apiRequestURL =
-    `https://api.soccerama.pro/v1.2/standings/season/${seasonID}?api_token=${tokenAPI}`;
+    const apiRequestURL = `${hostname}/standings/season/${seasonID}?api_token=${tokenAPI}`;
     return new Promise((resolve) => {
         sendRequest(apiRequestURL).then((respArray) => {
             let result = respArray.map((obj) => {
@@ -92,7 +89,7 @@ export function getInitialLeagueTableData() {
 }
 
 export function getTeamInformation(teamID) {
-    const apiRequestURL = `https://api.soccerama.pro/v1.2/players/team/${teamID}?api_token=${tokenAPI}`;
+    const apiRequestURL = `${hostname}/players/team/${teamID}?api_token=${tokenAPI}`;
      return new Promise((resolve) => {
         sendRequest(apiRequestURL).then((respArray) => {
             const result = respArray.map((obj) => {

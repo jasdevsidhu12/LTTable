@@ -5,7 +5,6 @@ import img from '../../resources/img/loading.gif';
 class LTLoading extends Component {
     constructor() {
         super();
-        this._arrayOfRows = [];
     }
     render() {
         return (

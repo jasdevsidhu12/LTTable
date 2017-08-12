@@ -19,7 +19,7 @@ class LTContent extends Component {
         this.selectedTeamName ='';
     }
 
-    getTeamData(teamID, teamLogo, teamName) {
+    getTeamData(teamID: number, teamLogo, teamName) {
         this.selectedTeamID = teamID;
         this.selectedTeamLogo = teamLogo;
         this.selectedTeamName = teamName;
@@ -75,6 +75,8 @@ LTContent.propTypes = {
 }
 
 function mapStatetoProps(state) {
+    console.log('state');
+    console.log(state);
     return {
         standingsArray: state.leagueTableReducer.standings,
         teams: state.leagueTableReducer.teams,
