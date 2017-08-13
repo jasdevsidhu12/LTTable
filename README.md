@@ -9,6 +9,7 @@ This project displays the league table standings of __Superliga Seasons__ teams.
 You can try running this app at your own __node version__ that you have.<return>
 If not, you can try installing node version 6.3.0 at the following link
 <a href="https://nodejs.org/en/blog/release/v6.3.0/">https://nodejs.org/en/blog/release/v6.3.0/</a> as I build this application on it, on the site scroll to below until you find the installer respective to the OS.
+
 ---
 
 ## Running this App ##
