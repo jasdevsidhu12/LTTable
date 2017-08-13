@@ -1,10 +1,16 @@
 'use strict'
 const express = require('express');
 const LTApi = require('./jsonModules/leagueTableAPI.js');
+const LTTeams = require('./jsonModules/leagueTableTeams.js');
 const port = 8000;
 const app = express();
 
 app.use(express.static('static'));
+
+app.get('/api/players/team/:teamID', function(req, res) {
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify(LTTeams[req.params.teamID]));
+});
 
 app.get('/api/competitions', function(req, res) {
     console.log('Im here');
